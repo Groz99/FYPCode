@@ -1,3 +1,5 @@
+#include <MPU6050.h>
+
 /*
     MPU6050 Triple Axis Gyroscope & Accelerometer. Simple Gyroscope Example.
     Read more: http://www.jarzebski.pl/arduino/czujniki-i-sensory/3-osiowy-zyroskop-i-akcelerometr-mpu6050.html
@@ -103,5 +105,5 @@ void loop()
   Serial.print(" Time = ");
   Serial.println(MyTime);
   //Serial.println("");
-  //delay(1000);
+  delay(100);
 }
