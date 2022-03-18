@@ -1,4 +1,3 @@
-#include <MPU6050.h>
 
 /*
     MPU6050 Triple Axis Gyroscope & Accelerometer. Simple Gyroscope Example.
