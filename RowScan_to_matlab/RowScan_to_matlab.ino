@@ -27,7 +27,7 @@ digitalWrite(ColTwo,LOW);
 digitalWrite(ColThree,LOW);
 digitalWrite(ColFour,LOW);
 
-Serial.begin(9600); 
+Serial.begin(115200); 
 
 }
 
@@ -68,43 +68,56 @@ digitalWrite(ColFour,LOW);
 
 MyTime = millis();
 
+
+//Data is output in following format, for N, N + 1
+//  N:   11,12,13,14,21,22,23,24,31,32,34,41,42,43,44,X,Y,Z,a,b,y
+//  N+1: 11,12,13,14,21,22,23,24,31,32,34,41,42,43,44,X,Y,Z,a,b,y
+//  ...
+
 Serial.print(p11);
-Serial.print(" ");
+Serial.print(",");
 Serial.print(p12) ;
-Serial.print(" ");
+Serial.print(",");
 Serial.print(p13) ;
-Serial.print(" ");
-Serial.println(p14);
+Serial.print(",");
+Serial.print(p14);
 //delay(1000);
+
+Serial.print(",");
 
 Serial.print(p21);
-Serial.print(" ");
+Serial.print(",");
 Serial.print(p22) ;
-Serial.print(" ");
+Serial.print(",");
 Serial.print(p23) ;
-Serial.print(" ");
-Serial.println(p24) ;
+Serial.print(",");
+Serial.print(p24) ;
 //delay(1000);
+
+Serial.print(",");
 
 Serial.print(p31);
-Serial.print(" ");
+Serial.print(",");
 Serial.print(p32) ;
-Serial.print(" ");
+Serial.print(",");
 Serial.print(p33) ;
-Serial.print(" ");
-Serial.println(p34);
+Serial.print(",");
+Serial.print(p34);
 //delay(1000);
 
+Serial.print(",");
+
 Serial.print(p41);
-Serial.print(" ");
+Serial.print(",");
 Serial.print(p42) ;
-Serial.print(" ");
+Serial.print(",");
 Serial.print(p43) ;
-Serial.print(" ");
-Serial.println(p44) ;
-//Serial.println(MyTime);
+Serial.print(",");
+Serial.print(p44) ;
+Serial.print(",");  
+Serial.println(MyTime);
 Serial.println("");
 
-delay(10);
+//delay(1000);
 
 }
