@@ -1,5 +1,5 @@
 // script to read full data frame from IMU and PR matrix
-
+// must be specd for mega for pins to apply correctly
 
 #include <Wire.h>
 #include <MPU6050.h>
