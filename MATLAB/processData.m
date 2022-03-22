@@ -1,11 +1,4 @@
-% DataLocation = 'H:\Tacto\FYPCode\Data_SMALL\';
-% addpath(DataLocation);
-% 
-% DataName = 'Test1Data.txt';
-% Delimiter = ' ';
-% RawData = importdata(DataName, Delimiter);
-
-% Do some plotting of data
+% Script to generate plots of the data for analysis
 
 Dataslice = RawData(:,1);  % First pixel (11)
 Xaxis = linspace(0,100,length(Dataslice));

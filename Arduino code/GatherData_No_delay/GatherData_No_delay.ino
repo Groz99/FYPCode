@@ -22,6 +22,19 @@
 
 // Note that for the use case of machine learning, IMU data processing for dead reckoning is not essential. Raw data may be used if it is more useful.
 
+
+///////////////////////// Attempt to speed up ADC clock
+// defines for setting and clearing register bits
+#ifndef cbi
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#endif
+#ifndef sbi
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
+#endif
+
+///////////////////////// Attempt to speed up ADC clock
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Include libraries
@@ -46,10 +59,21 @@ int RowFour = A11;
 
 MPU6050 mpu;
 
+int counter = 0;
+
 void setup() {
 
+  // Speed up ADC at the cost of some resolution
+  // set prescale to 16
+  sbi(ADCSRA,ADPS2) ;
+  cbi(ADCSRA,ADPS1) ;
+  cbi(ADCSRA,ADPS0) ;
+  
   // Initialise baud rate to highest supported value to maximise data sample rate
   Serial.begin(115200);
+
+  // even further beyond
+  //Serial.begin(2000000);  // increases speed by ~1ms but jitter increased
 
   // Set up the row scanner pinmodes and initialise all low
   //Set digital pins to output mode
@@ -202,14 +226,7 @@ void loop() {
   // Read temperature using internal MPU temp sensor  
   float temp = mpu.readTemperature();
 
-
-
-  // implement 10ms nonblocking delay to ensure regular sampling
-  
-  //Serial.println(current_time);
-   
-
-
+    
   Serial.print(p11);
   Serial.print(" ");
   Serial.print(p12);
@@ -258,6 +275,11 @@ void loop() {
   Serial.print(" ");
   int current_time = millis();
   Serial.println(current_time);
+
+
+
+
+
 }
 
   ////////////////////////////////////////////
