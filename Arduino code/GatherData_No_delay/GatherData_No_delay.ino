@@ -5,7 +5,7 @@
 
 // Data frame is output in the follow format
 
-// p11, p12, p13, p14, p21, p22, p23, p24, p31, p32, p33, p34, p41, p42, p43, p44, X, Y, Z, Alpha, Beta, Gamma, Temp
+// p11, p12, p13, p14, p21, p22, p23, p24, p31, p32, p33, p34, p41, p42, p43, p44, Alpha, Beta, Gamma, X, Y, Z, Temp
 
 //Where symbols are:
 
