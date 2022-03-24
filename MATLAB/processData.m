@@ -17,7 +17,7 @@
 
 SamplePeriod = 8e-3;
 Tlength = length(RawData) * SamplePeriod; 
-
+NumPixels = 16;
 Xaxis = linspace(0,Tlength,length(RawData));
 
 
@@ -29,6 +29,7 @@ Xaxis = linspace(0,Tlength,length(RawData));
 
 %%%%%%%%%%% Look at PR Matrix readings
 
+%{
 Dataslice = RawData(:,1);  % First pixel (11)
 figure
 plot(Xaxis, Dataslice)
@@ -44,6 +45,19 @@ plot(Xaxis, Dataslice2)
 title('Pixel 16 all readings')
 xlabel('Time')
 ylabel('Analog reading')
+%}
+
+%%%%% Plot all pixels instead:
+close all
+for N = 1 : NumPixels
+   
+    Dataslice = RawData(:,N);  % First pixel (11)
+    figure
+    plot(Xaxis, Dataslice)
+    title(['Pixel ' num2str(N) ' all readings'])
+    xlabel('Time')
+    ylabel('Analog reading')
+end
 %%%%%%%%%%% Look at Gyro readings
 
 %{
