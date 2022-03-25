@@ -14,8 +14,8 @@ addpath(DataLocation);
 
 %DataName = 'Test2_FullSpeed.txt';
 %DataName = 'Test3_Pixel comparison.txt';
-DataName = 'Test4_Pixel comparison2.txt';
-DataName = 'Test4_PC.txt';
+DataName = 'Test4_Pixel comparison.txt';
+
 
 Delimiter = ' ';
 RawData = importdata(DataName, Delimiter);
