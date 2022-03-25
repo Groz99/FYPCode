@@ -31,6 +31,9 @@
 // Initialise pins 
 //for PR Matrix 
 
+
+// Note that test rig actually has orientation of rows and columns switched
+
 //Set column pins to be energise by arduino
 int ColOne = 52;
 int ColTwo = 50;
