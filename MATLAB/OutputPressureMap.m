@@ -3,7 +3,7 @@
 
 clear all
 ard = arduino;
-cycles = 200;
+cycles = 200000;
 
 for n = 1 : cycles
 
