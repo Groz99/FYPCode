@@ -2,7 +2,7 @@
 % installed
 
 clear all
-ard = arduino;
+x`;
 cycles = 200000;
 
 for n = 1 : cycles
@@ -39,7 +39,7 @@ for n = 1 : cycles
     Pressuremap(4,:) = [a b c d];
     writeDigitalPin(ard,'D46',0);
 
-    Pressuremap
+    %Pressuremap
     heatmap(Pressuremap,'Colormap',summer)
     caxis([0, 3]);
     drawnow

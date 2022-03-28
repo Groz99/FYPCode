@@ -2,9 +2,6 @@
 %port = serialportlist('available');
 % still reads with 4ms latency as eariler.
 
-%
-%WORKING IN 2021b
-
 clear all
 %instrreset
 %ard = arduino;
@@ -27,27 +24,19 @@ data = [];
 
 %Readline does not work on 2018b...
 
-%Run through init
-for N = 1:10
-    line = readline(arduino);
-end
-
 
 while true
-    %data = [data; readline(arduino)];
-    line = readline(arduino);
-    PRArray = split(line,' ');
-    
-    Pressuremap = str2double([fliplr(PRArray(1:4)'); PRArray(5:8)'; fliplr(PRArray(9:12)'); PRArray(13:16)']);
-
+    data = [data; readline(arduino)];
+    line = readline(arduino)
+     = split(line,' ')
+    line(1)
     heatmap(Pressuremap,'Colormap',summer)
-    caxis([0 500]);
+    caxis([0, 3]);
     drawnow
-    
 end
 
 
-%fclose(arduino)
+fclose(arduino)
 delete(arduino)
 clear arduino
 
