@@ -105,8 +105,8 @@ void setup() {
   // SET SENSE DEV
   // See .h file in github repositry for more enums
 
-  // mpu.setScale(0b00) // 250 deg/s, minimum scale for gyro (Should give max sense)
-  // mpu.setRange(0b00) // 2g/s, minimum scale for accel 
+   mpu.setScale(0b00); // 250 deg/s, minimum scale for gyro (Should give max sense) - defaults to 0b11
+   mpu.setRange(0b00); // 2g/s, minimum scale for accel - defaults to 0b11
 
   // Calibrate gyroscope. The calibration must be at rest.
   // If you don't want calibrate, comment this line.
