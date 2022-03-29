@@ -2,6 +2,10 @@
 %port = serialportlist('available');
 % still reads with 4ms latency as eariler.
 
+%Modified to use the data to plot a heatmap in real time for demo purposes
+%Can only run at 2Hz due to MATLAB readline being so slow
+
+
 %
 %WORKING IN 2021b
 

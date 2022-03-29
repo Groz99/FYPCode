@@ -15,6 +15,8 @@ Xaxis = linspace(0,Tlength,length(RawData));
 % [16 12 8 3 7 11 15 14 10 6 2 1 5 9 13] 
 
 TapOrder = [16 12 8 4 3 7 11 15 14 10 6 2 1 5 9 13] ;
+TapOrder = [1:16];
+
 
 % Reading form 0 to 5 volts is scaled 0 to 1023
 % For a 8ms sample time and a 1 second wait while de-pressed, over 100
