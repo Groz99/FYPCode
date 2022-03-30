@@ -67,14 +67,26 @@ void setup() {
   digitalWrite(ColTwo,LOW);
   digitalWrite(ColThree,LOW);
   digitalWrite(ColFour,LOW);
+
+
+  // SET SENSE DEV
+  // See .h file in github repositry for more enums
+
+   //mpu.setScale("0b00"); // 250 deg/s, minimum scale for gyro (Should give max sense) - defaults to 0b11
+   //mpu.setRange(0b00); // 2g/s, minimum scale for accel - defaults to 0b11
+
   
   // Pre operation checks that MPU is operating correctly 
+
+  // SET SCALE HERE - 250 to 2000 dps 2g to 16g
   Serial.println("Initialize MPU6050");
   while(!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G))
   {
     Serial.println("Could not find a valid MPU6050 sensor, check wiring!");
     delay(500);
   }
+//  */
+
   
   // If you want, you can set gyroscope offsets
   // mpu.setGyroOffsetX(155);
@@ -87,7 +99,7 @@ void setup() {
 
   // Set threshold sensivty. Default 3.
   // If you don't want use threshold, comment this line or set 0.
-  mpu.setThreshold(3);
+  mpu.setThreshold(1);
   
   // Check settings
   checkSettings();

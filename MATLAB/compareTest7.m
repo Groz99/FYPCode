@@ -16,14 +16,14 @@ plot(Xaxis,Yaxis)
 
 
 hold on
-Pixel = 19;
+Pixel = 17;
 Xaxis = linspace(1,length(RawData(:,Pixel)),length(RawData(:,Pixel )));
 %for AccelZ
 %Yaxis = (RawData(:,Pixel) + 9) * 50;
 Yaxis = (RawData(:,Pixel));
 plot(Xaxis,Yaxis)
 
-
+%{
 %Crossover appears at 20000, 39500
 C1 = 20000;
 C2 = 39500;
@@ -107,4 +107,8 @@ plot(Xaxis,Seg2F','LineWidth',0.5)
 plot(Xaxis,Seg3F','LineWidth',0.5)
 
 legend('Frame 1', 'Frame 2', 'Frame 3')
+
 %}
+
+%}
+
