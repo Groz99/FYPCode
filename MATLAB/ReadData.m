@@ -33,7 +33,7 @@ data = [];
 
 %Run through init
 for N = 1:10
-    line = readline(arduino);
+    line = readline(arduino)
 end
 
 
