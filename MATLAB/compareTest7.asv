@@ -4,22 +4,24 @@
 
 
 % Analyse full trace for pixel of choice
+SampleRate = 8e-3;
 
-Pixel = 8;
-Xaxis = linspace(1,length(RawData(:,Pixel)),length(RawData(:,Pixel )));
+Pixel = 10;
+Xaxis = linspace(1,length(RawData(:,Pixel))*SampleRate,length(RawData(:,Pixel )));
 Yaxis = RawData(:,Pixel) ;
 figure
 plot(Xaxis,Yaxis)
 
 %Plot thick red lines to separate readings
-C1 = 20000;
-C2 = 39500;
+C1 = 20000*SampleRate;
+C2 = 39500*SampleRate;
 Red1X = [C1 C1];
 Red2X = [C2 C2];
 Red1Y = [0 1000];
 Red2Y = [0 1000];
-
-
+hold on
+plot(Red1X,Red1Y,'r','linewidth',3)
+plot(Red2X,Red2Y,'r','linewidth',3)
 %Z axis accell is 22
 %From 16 is alpha, beta, gamma, x,y,z
 
@@ -39,11 +41,16 @@ hold on
 
 for idx = 17:19
 Pixel = idx;
-Xaxis = linspace(1,length(RawData(:,Pixel)),length(RawData(:,Pixel )));
+Xaxis = linspace(1,length(RawData(:,Pixel))*SampleRate,length(RawData(:,Pixel )));
 %for AccelZ
 %Yaxis = (RawData(:,Pixel) + 9) * 50;
 Yaxis = (RawData(:,Pixel));
 plot(Xaxis,Yaxis)
+xlabel('Time (s)')
+ylabel('Gyroscope reading deg/s')
+title('IMU Gyroscope readings fo multiple frames')
+title('IMU Gyroscope readings for one frame')
+legend('X', 'Y', 'Z')
 end
 
 %plot all accels
@@ -59,7 +66,7 @@ Yaxis = (RawData(:,Pixel));
 plot(Xaxis,Yaxis)
 end
 
-%{
+
 %Crossover appears at 20000, 39500
 C1 = 20000;
 C2 = 39500;
@@ -115,36 +122,19 @@ Seg1 = [Seg1 ; zeros(length(Seg3) - length(Seg1),1)];
 Seg2 = [Seg2 ; zeros(length(Seg3) - length(Seg2),1)];
 Seg3 = [Seg3];
 
-%Using lowpass filter
-lowpassF = 0.9;
-Seg1F = lowpass(Seg1,lowpassF);
-Seg2F = lowpass(Seg2,lowpassF);
-Seg3F = lowpass(Seg3,lowpassF);
-
 
 figure
 hold on
-Xaxis = linspace(1,length(Seg3),length(Seg3));
+Xaxis = linspace(1,length(Seg3)*SampleRate,length(Seg3));
 plot(Xaxis,Seg1','LineWidth',0.5)
 plot(Xaxis,Seg2','LineWidth',0.5)
 plot(Xaxis,Seg3','LineWidth',0.5)
 
-title('Pixel responses')
-ylabel('Sensor count')
-xlabel('Samples')
+title('Repeated readings, pixel 8')
+ylabel('Count')
+xlabel('Time (s)')
 legend('Frame 1', 'Frame 2', 'Frame 3')
 
-%{
-figure
-hold on
-Xaxis = linspace(1,length(Seg3),length(Seg3));
-plot(Xaxis,Seg1F','LineWidth',0.5)
-plot(Xaxis,Seg2F','LineWidth',0.5)
-plot(Xaxis,Seg3F','LineWidth',0.5)
-
-legend('Frame 1', 'Frame 2', 'Frame 3')
-
-%}
 
 %}
 

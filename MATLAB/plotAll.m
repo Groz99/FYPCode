@@ -14,7 +14,7 @@ Xaxis = linspace(0,Tlength,length(RawData));
 % In order of raw data:
 % [16 12 8 3 7 11 15 14 10 6 2 1 5 9 13] 
 
-TapOrder = [16 12 8 4 3 7 11 15 14 10 6 2 1 5 9 13] ;
+%TapOrder = [16 12 8 4 3 7 11 15 14 10 6 2 1 5 9 13] ;
 TapOrder = [1:16];
 
 
