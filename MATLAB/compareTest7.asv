@@ -11,6 +11,15 @@ Yaxis = RawData(:,Pixel) ;
 figure
 plot(Xaxis,Yaxis)
 
+%Plot thick red lines to separate readings
+C1 = 20000;
+C2 = 39500;
+Red1X = [C1 C1];
+Red2X = [C2 C2];
+Red1Y = [0 1000];
+Red2Y = [0 1000];
+
+
 %Z axis accell is 22
 %From 16 is alpha, beta, gamma, x,y,z
 
@@ -23,11 +32,38 @@ Xaxis = linspace(1,length(RawData(:,Pixel)),length(RawData(:,Pixel )));
 Yaxis = (RawData(:,Pixel));
 plot(Xaxis,Yaxis)
 
+
+%plot all gyros
+figure
+hold on
+
+for idx = 17:19
+Pixel = idx;
+Xaxis = linspace(1,length(RawData(:,Pixel)),length(RawData(:,Pixel )));
+%for AccelZ
+%Yaxis = (RawData(:,Pixel) + 9) * 50;
+Yaxis = (RawData(:,Pixel));
+plot(Xaxis,Yaxis)
+end
+
+%plot all accels
+figure
+hold on
+
+for idx = 20:22
+Pixel = idx;
+Xaxis = linspace(1,length(RawData(:,Pixel)),length(RawData(:,Pixel )));
+%for AccelZ
+%Yaxis = (RawData(:,Pixel) + 9) * 50;
+Yaxis = (RawData(:,Pixel));
+plot(Xaxis,Yaxis)
+end
+
 %{
 %Crossover appears at 20000, 39500
 C1 = 20000;
 C2 = 39500;
-
+Pixel = 8;
 
 % 3 segments of data
 Seg1 = RawData(1:C1,:);
@@ -108,7 +144,7 @@ plot(Xaxis,Seg3F','LineWidth',0.5)
 
 legend('Frame 1', 'Frame 2', 'Frame 3')
 
-}%
+%}
 
 %}
 

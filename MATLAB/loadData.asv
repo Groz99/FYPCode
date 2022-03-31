@@ -21,7 +21,7 @@ addpath(DataLocation);
 DataName = 'test7_All_repeatability.txt';
 %DataName = 'test8_All_IMU2.txt';
 %DataName = 'test9_All_IMU_faster2.txt';
-%DataName = 'test10_All_IMU_faster2.txt';
+DataName = 'test10_All_IMU_faster2.txt';
 
 Delimiter = ' ';
 RawData = importdata(DataName, Delimiter);
