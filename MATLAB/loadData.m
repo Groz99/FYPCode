@@ -20,13 +20,20 @@ addpath(DataLocation);
 %DataName = 'Test4_Pixel comparison.txt';
 %DataName = 'test7_All_repeatability.txt';
 %DataName = 'test6_All.txt'
+%DataName = 'test6_All_redo.txt'
+%DataName = 'test6_All_redo2.txt'
+%DataName = 'test6_All_redo3.txt'
 %DataName = 'test8_All_IMU2.txt';
 %DataName = 'test9_All_IMU_faster2.txt';
 %DataName = 'test10_All_IMU_faster2.txt';
 %DataName = 'Test11_1_Calibration2.txt';
 %DataName = 'Test11_8_Calibration.txt';
 %DataName = 'Test11_9_Calibration.txt';
-DataName = 'Test11_16_Calibration.txt';
+%DataName = 'Test11_16_Calibration.txt';
+%DataName = 'Test12_Pretrain4.txt';
+%DataName = 'Test13_Smooth1.txt';%
+%DataName = 'Test14_Levelled1.txt';
+
 
 Delimiter = ' ';
 RawData = importdata(DataName, Delimiter);
