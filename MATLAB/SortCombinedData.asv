@@ -27,7 +27,7 @@ for M = 1: length(RawData(:,1))
 end
 
 %Buffer a few zeroes at the start
-StartPoint = StartPoint - 350;
+StartPoint = StartPoint - 330;
 
 %
 Endlast = StartPoint;
@@ -90,7 +90,6 @@ for N = 1 : 16
     Xaxis = linspace(1,length(FullFrame(:,N)),length(FullFrame(:,N)));
     Yaxis = FullFrame(:,N);
     Maxvals(N) = max(Yaxis);
-    Meanvals(N) = mean(Yaxis)
     figure
     XaxisT = Xaxis * 8e-3;
     plot(XaxisT,Yaxis)
@@ -108,12 +107,10 @@ for N = 1 : 16
     Yaxis = FullFrame(:,N);
     XaxisT = Xaxis * 8e-3;
     plot(XaxisT,Yaxis)
-    title('All pixel pulses') 
+    title('All pixels') 
     xlabel('Time (s)')
     ylabel('Count')
 end  
-
-legend('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16')
 
 % Max Vals
 % This proves that max values are observed during the correct pixel press
@@ -155,8 +152,6 @@ for N = 1 : 16
     Heatmap = [fliplr(Heatvals(1:4));Heatvals(5:8);fliplr(Heatvals(9:12));Heatvals(13:16)];
     heatmap(Heatmap,'Colormap',summer)
     title(['Pixel ' num2str(N) ' heatmap'])
-    xlabel('Pixel row')
-    ylabel('Pixel column')
 end   
 
 
