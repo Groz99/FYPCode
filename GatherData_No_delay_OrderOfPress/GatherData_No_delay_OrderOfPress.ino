@@ -95,9 +95,9 @@ void setup() {
 
 
 // Way to calibrate each time power on?
-  mpu.setAccelOffsetX(-0.5);
-  mpu.setAccelOffsetY(0.4);
-  mpu.setAccelOffsetZ(9); 
+//  mpu.setAccelOffsetX(-0.5);
+//  mpu.setAccelOffsetY(0.4);
+//  mpu.setAccelOffsetZ(9); 
   
   // Calibrate gyroscope. The calibration must be at rest.
   // If you don't want calibrate, comment this line.
@@ -106,7 +106,7 @@ void setup() {
 
   // Set threshold sensivty. Default 3.
   // If you don't want use threshold, comment this line or set 0.
-  mpu.setThreshold(1);
+  mpu.setThreshold(0);
   
   // Check settings
   checkSettings();
