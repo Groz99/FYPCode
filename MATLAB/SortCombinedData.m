@@ -4,6 +4,9 @@
 
 %%%%% Specced and tested for 5 second delay between pulses
 
+% NB will only work if return to zero is good.
+
+
 
 % period of waiting between pixel presses
 WaitTime = 5;
@@ -14,20 +17,20 @@ WaitSamples = WaitTime / SampleRate;
 SampleCount = 0;
 PixelNum = 1;
 PixelData = [];
-PulsePeriod = 500;
+PulsePeriod = 80; % SET TO 500 for 6, 80 for 6redo
 
 
 %Find start point
 for M = 1: length(RawData(:,1))
     totalReading = sum(RawData(M,1:16));
-    if totalReading > 10 
+    if totalReading > 100 
        StartPoint = M;
        break
     end
 end
 
 %Buffer a few zeroes at the start
-StartPoint = StartPoint - 350;
+StartPoint = StartPoint - 100; % 350 for 6, 100 6redo
 
 %
 Endlast = StartPoint;
@@ -90,7 +93,7 @@ for N = 1 : 16
     Xaxis = linspace(1,length(FullFrame(:,N)),length(FullFrame(:,N)));
     Yaxis = FullFrame(:,N);
     Maxvals(N) = max(Yaxis);
-    Meanvals(N) = mean(Yaxis)
+    Meanvals(N) = mean(Yaxis);
     figure
     XaxisT = Xaxis * 8e-3;
     plot(XaxisT,Yaxis)
@@ -120,6 +123,7 @@ legend('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16')
 % 
 
 figure
+%bar(Meanvals,0.5)
 bar(Maxvals,0.5)
 %plot(length(PixelMaxes),PixelMaxes)
 title('Comparison of taxel Maximum values')
@@ -145,7 +149,7 @@ for N = 1 : 16
     
     for M = 1:16
         %Peak val
-        Heatvals(M) = FullFrame(idx + 200,M);
+        Heatvals(M) = FullFrame(idx + 100,M); %250 for 6, 100 for 6redo
         
         %Average
         %Heatvals(M) = mean(RawData(idx + 125: idx + 135,M));
