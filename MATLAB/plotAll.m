@@ -1,6 +1,6 @@
 % Script to plot all 16 taxels across the whole time domain
 % Specialised segment of processData
-close all
+%close all
 
 NumTaxels = 16;
 SamplePeriod = 8e-3;
@@ -15,6 +15,8 @@ Xaxis = linspace(0,Tlength,length(RawData));
 % [16 12 8 3 7 11 15 14 10 6 2 1 5 9 13] 
 
 %TapOrder = [16 12 8 4 3 7 11 15 14 10 6 2 1 5 9 13] ;
+
+%Moved to order of press from within the arduino code itself
 TapOrder = [1:16];
 
 

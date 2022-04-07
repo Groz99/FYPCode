@@ -33,7 +33,11 @@ addpath(DataLocation);
 %DataName = 'Test12_Pretrain4.txt';
 %DataName = 'Test13_Smooth1.txt';%
 %DataName = 'Test14_Levelled1.txt';
-
+%DataName = 'Test15_PretrainC.txt';
+%DataName = 'Test16_SmoothA.txt';
+%DataName = 'Test16_RoughA.txt';
+%DataName = 'Test16_LevelledA.txt';
+DataName = 'Test16_RidgedA.txt';
 
 Delimiter = ' ';
 RawData = importdata(DataName, Delimiter);

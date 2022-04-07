@@ -6,15 +6,17 @@
 % Analyse full trace for pixel of choice
 SampleRate = 8e-3;
 
-Pixel = 17;
+Pixel = 22;
 Xaxis = linspace(1,length(RawData(:,Pixel)),length(RawData(:,Pixel )));
+XaxisT = linspace(1,length(RawData(:,Pixel))*SampleRate,length(RawData(:,Pixel )));
 Yaxis = RawData(:,Pixel) ;
+
 figure
-plot(Xaxis,Yaxis)
+plot(XaxisT,Yaxis)
 
 %Plot thick red lines to separate readings
-C1 = 20000;
-C2 = 39500;
+C1 = 20000*SampleRate;
+C2 = 39500*SampleRate;
 Red1X = [C1 C1];
 Red2X = [C2 C2];
 Red1Y = [-1000 1000];
@@ -64,6 +66,8 @@ Xaxis = linspace(1,length(RawData(:,Pixel)),length(RawData(:,Pixel )));
 %Yaxis = (RawData(:,Pixel) + 9) * 50;
 Yaxis = (RawData(:,Pixel));
 plot(Xaxis,Yaxis)
+plot(Red1X,Red1Y,'r','linewidth',3)
+plot(Red2X,Red2Y,'r','linewidth',3)
 end
 
 
