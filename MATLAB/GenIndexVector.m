@@ -79,12 +79,30 @@ IndexMat(4,:) = IndexMat(4,:) + DataLength(1) + DataLength(2) + DataLength(3);
 % Index: 1, 2, 3, 4...
 % Class: 1, 1, 1, 1... 
 
+
+
+% USE THIS TO REMOVE A CERTAIN SET. HERE REMOVES 1
+%%%%%%%%%%
 IndexMatLong(1,:) = [IndexMat(1,:) IndexMat(2,:) IndexMat(3,:) IndexMat(4,:)];
+%IndexMatLong(1,:) = [IndexMat(2,:) IndexMat(3,:) IndexMat(4,:)];
+%%%%%%%%%%
+
+
 IndexMatLong(2,:) = zeros(1,length(IndexMatLong(1,:)));
+
+
+% USE THIS TO REMOVE A CERTAIN SET. HERE REMOVES 1
+%%%%%%%%%%
+%for N = 2:4
+%    IndexMatLong(2,(N-1)*50+1:N * NumWindows) = N; % add class label 
+%end
+%IndexMatLong(:,1:50) = '';
 
 for N = 1:4
     IndexMatLong(2,(N-1)*50+1:N * NumWindows) = N; % add class label 
 end
+%%%%%%%%%%
+
 
 %Sort randomly to make suitable for insertion into MLP:
 randomseq = randperm(length(IndexMatLong));
@@ -98,14 +116,20 @@ end
 % PR 1 : 16,  X, Y, Z, A, B, G, Temp, Time,
 % With index going down
 
-StackedData = [DataStack(1);DataStack(2);DataStack(3);DataStack(4)];
-
 
 %Optional - Remove temperature and timestamp
 
-%StackedData = StackedData[
-a = 1
 
+%REMOVE NANS
+
+for N = 1 : length(DataStack)
+    if sum(isnan(DataStack(N,:))) > 0
+        DataStack(N,:) = DataStack(N-1,:);
+        
+    end
+end
+
+DataStackShort = DataStack(:,1:22);
 
 %test capture
 %{

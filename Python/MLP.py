@@ -79,29 +79,36 @@ class NeuralNetwork:
 
 #To switch  to filtered data can simply change the file that is loaded, handles are the same
 #mat = spio.loadmat('trainingseg.mat', squeeze_me=True)
-Data = spio.loadmat('DataStackShort.mat', squeeze_me=True)
-Index = spio.loadmat('IndexMatRand.mat', squeeze_me=True)
-
-Data = Data['DataStackShort']   # 24 along, stacked downwards
-IndexAll = Index['IndexMatRand'] # Random order, Index;Class
 
 
-# Remove time and temp data
-#Data = Data[0:21]
+LoadData = spio.loadmat('DataStack.mat',squeeze_me=True)
+LoadDataShort = spio.loadmat('DataStackShort.mat', squeeze_me=True)
+
+
+LoadIndex = spio.loadmat('IndexMatRand.mat', squeeze_me=True)
+
+### Can use this to omit certain data. no other changes are neccesary. This removes one (Needs preprocessing in matlab)
+#LoadIndex = spio.loadmat('IndexMatRand_234.mat', squeeze_me=True)
+
+#Data = LoadData['DataStack']   # 24 along, stacked downwards
+Data = LoadDataShort['DataStackShort']   # 22 along, stacked downwards
+
+IndexAll = LoadIndex['IndexMatRand'] # Random order, Index;Class
+
 
 
 IndexLen = len(IndexAll[0])
+DataLen = len(Data[0])
 
 IndexTrain = IndexAll[:,0 : round(IndexLen * 0.8)]
 IndexTest = IndexAll[:,round(IndexLen * 0.8) : -1]
 
-binwidth = 1000
-
+binwidth = 800
 #Set network parameters
-input_nodes = binwidth*22  #24 for full stack, 22 for short
-hidden_nodes = 50
+input_nodes = binwidth*DataLen  #24 for full stack, 22 for short
+hidden_nodes = 10000
 output_nodes = 4
-learning_rate = 0.02
+learning_rate = 0.5
 trainingIt = 1
 
 #Initiate MLP 
@@ -142,6 +149,7 @@ classidx = 0
 #save data to confusion matrix for in depth analysis of incorrect classifications
 confusionmat = numpy.zeros((output_nodes,output_nodes))
 
+#for Spikeindex in IndexTest[0]:
 for Spikeindex in IndexTest[0]:
     #Dsegment = d[int(Spikeindex - binwidth/2) : int(Spikeindex + binwidth/2)]
     Dsegment = Data[Spikeindex : int(Spikeindex + binwidth)] 
