@@ -51,7 +51,5 @@ while true
 end
 
 
-%fclose(arduino)
-delete(arduino)
-clear arduino
+    
 
