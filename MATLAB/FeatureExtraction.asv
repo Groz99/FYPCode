@@ -1,0 +1,21 @@
+%Use inbuilt functions to examine features
+
+%Run GenToolBoxVar_AllData.m first
+
+%All predictors
+X = DataWideSub(:,1:2200);
+Y = DataWideSub(:,2201);
+
+
+[idx,scores] = fscchi2(X,Y);
+
+bar(scores(idx))
+xlabel('Predictor rank')
+ylabel('Predictor importance score')
+
+ScoresPerSource = []
+
+for N = 1 : length(scores) : 100
+
+    scores(N:N+99)
+
