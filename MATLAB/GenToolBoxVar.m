@@ -32,7 +32,7 @@ DataStack = [];
 
 for Class = 1:4
     
-    
+    % RUN FOR TEST 16, 18, 19
     
     switch Class
         case 1 
@@ -160,3 +160,12 @@ for N = 1 : length(IndexMatLong)
     %DataWide(N,:) = [reshape(DataStack(Spikestart:Spikestart + BinWidth-1,:)',1,[]) Class];
     
 end
+
+DataWideSub_PR = [DataWideSub(:,1:1600) DataWideSub(:,2201)] ;
+DataWideSub_IMU = [DataWideSub(:,1601:2200) DataWideSub(:,2201)] ;
+DataWideSub_Gyro = [DataWideSub(:,1601:1900) DataWideSub(:,2201)] ;
+DataWideSub_Accell = [DataWideSub(:,1901:2200) DataWideSub(:,2201)] ;
+
+
+
+
