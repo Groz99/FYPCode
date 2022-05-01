@@ -69,6 +69,15 @@ void setup() {
   digitalWrite(ColFour,LOW);
 
 
+// BUGGIN OUT
+//pinMode(22, OUTPUT);
+//digitalWrite(22,HIGH);
+
+
+
+
+
+
   // SET SENSE DEV
   // See .h file in github repositry for more enums
 
