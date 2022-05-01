@@ -28,6 +28,22 @@
 #include <Wire.h>
 #include <MPU6050.h>
 
+
+/// NEEDS TESTING
+
+
+///////////////////////// Attempt to speed up ADC clock
+// defines for setting and clearing register bits
+#ifndef cbi
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#endif
+#ifndef sbi
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
+#endif
+
+///////////////////////// Attempt to speed up ADC clock
+
+
 // Initialise pins 
 //for PR Matrix 
 
